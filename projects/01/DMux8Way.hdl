@@ -17,4 +17,53 @@ CHIP DMux8Way {
 
     PARTS:
     // Put your code here:
+    // a
+    Or(a=sel[0], b=sel[1], out=wa1);
+    Or(a=sel[2], b=wa1, out=wa2);
+    Not(in=wa2, out=wa3);
+    And(a=in, b=wa3, out=a);
+
+    // b
+    Not(in=sel[2], out=wb1);
+    Not(in=sel[1], out=wb2);
+    And(a=wb1, b=wb2, out=wb3);
+    And(a=wb3, b=sel[0], out=wb4);
+    And(a=in, b=wb4, out=b);
+
+    // c
+    Not(in=sel[0], out=wc1);
+    Not(in=sel[2], out=wc2);
+    And(a=wc1, b=wc2, out=wc3);
+    And(a=wc3, b=sel[1], out=wc4);
+    And(a=in, b=wc4, out=c);
+
+    // d
+    Not(in=sel[2], out=wd1);
+    And(a=sel[1], b=sel[0], out=wd2);
+    And(a=wd1, b=wd2, out=wd3);
+    And(a=wd3, b=in, out=d);
+
+    // e
+    Not(in=sel[1], out=we1);
+    Not(in=sel[0], out=we2);
+    And(a=we1, b=we2, out=we3);
+    And(a=we3, b=sel[2], out=we4);
+    And(a=in, b=we4, out=e);
+
+    // f
+    Not(in=sel[1], out=wf1);
+    And(a=sel[0], b=sel[2], out=wf2);
+    And(a=wf1, b=wf2, out=wf3);
+    And(a=wf3, b=in, out=f);
+
+    // g
+    Not(in=sel[0], out=wg1);
+    And(a=sel[1], b=sel[2], out=wg2);
+    And(a=wg1, b=wg2, out=wg3);
+    And(a=wg3, b=in, out=g);
+
+    // h
+    And(a=sel[0], b=sel[1], out=wh1);
+    And(a=sel[2], b=wh1, out=wh2);
+    And(a=in, b=wh2, out=h);
 }
